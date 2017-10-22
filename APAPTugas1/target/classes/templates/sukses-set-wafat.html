@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Set Wafat</title>
+		<link rel = "stylesheet" href = "/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div th:replace="fragments/fragment :: header"></div><br/>
+		
+		<h3 class="text-center">Sukses!</h3>
+			<p th:text="'Penduduk dengan NIK ' + ${nik} + ' sudah tidak aktif'"
+				class="text-center"></p>
+	</body>
+	<div th:replace="fragments/fragment :: footer"></div>
+</html>

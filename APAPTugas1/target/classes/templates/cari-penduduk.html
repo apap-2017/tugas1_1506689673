@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>Sistem Kependudukan OnlineProvinsi DKI Jakarta</title>
+		<link rel = "stylesheet" href = "/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div th:replace="fragments/fragment :: header"></div>
+		
+		<h5>Cari Penduduk</h5>
+		<div class="container">
+			<form action="/penduduk/cari" method="get" th:object="${penduduk}">
+				<input th:if="${id_kota != null}" id="id_kota" name="id_kota"
+					th:value="${id_kota}" type="hidden"></input> <input
+					th:if="${id_kecamatan != null}" id="id_kecamatan"
+					name="id_kecamatan" th:value="${id_kecamatan}" type="hidden"></input>
+				<input th:if="${id_kelurahan != null}" id="id_kelurahan"
+					name="id_kelurahan" th:value="${id_kelurahan}" type="hidden"></input>
+				<div class="form-group">
+					<label for="kota">Kota/Kabupaten</label> <select
+						class="form-control" name="id_kota" id="id_kota"
+						th:disabled="${id_kota != null}">
+						<option value="">Pilih Kota</option>
+						<option th:each="ListKota : ${list_kota}"
+							th:value="${ListKota.id}" th:text="${ListKota.nama_kota}"
+							th:selected="${id_kota == ListKota.id}"></option>
+					</select>
+				</div>
+				<div class="form-group" th:if="${id_kota != null}">
+					<label for="kecamatan">Kecamatan</label> <select
+						class="form-control" name="id_kecamatan" id="id_kecamatan"
+						th:disabled="${id_kecamatan != null}">
+						<option value="">Pilih Kecamatan</option>
+						<option th:each="ListKecamatan : ${list_kecamatan}"
+							th:value="${ListKecamatan.id}"
+							th:text="${ListKecamatan.nama_kecamatan}"
+							th:selected="${id_kecamatan == ListKecamatan.id}"></option>
+					</select>
+				</div>
+				<div class="form-group" th:if="${id_kecamatan != null}">
+					<label for="kelurahan">Kelurahan</label> <select
+						class="form-control" name="id_kelurahan" id="id_kelurahan"
+						th:disabled="${id_kelurahan != null}">
+						<option value="">Pilih Kelurahan</option>
+						<option th:each="ListKelurahan : ${list_kelurahan}"
+							th:value="${ListKelurahan.id}"
+							th:text="${ListKelurahan.nama_kelurahan}"
+							th:selected="${id_kelurahan == ListKelurahan.id}"></option>
+					</select>
+				</div>
+				<div class="text-center">
+					<input type="submit" value="Lihat" class="btn btn-primary btnNext"></input>
+				</div>
+			</form>
+		</div>
+		<div th:replace="fragments/fragment :: footer"></div>
+	</body>
+</html>

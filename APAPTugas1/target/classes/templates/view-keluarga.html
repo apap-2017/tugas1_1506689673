@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View Keluarga</title>
+        <link rel = "stylesheet" href = "/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div th:replace="fragments/fragment :: header"></div><br/>
+ 		
+ 		<div class="container">
+ 			<h3 th:text="'Lihat Data Keluarga - ' + ${keluarga.nkk}">Lihat data keluarga berdasarkan NKK</h3>
+	 		<table class="table dt-responsive">
+	        	<tr>
+	        		<td><b>NKK</b></td>
+	        		<td th:text="${keluarga.nkk}">NKK</td>
+	        	</tr>
+	        	<tr>
+	        		<td><b>Alamat</b></td>
+	        		<td th:text="${keluarga.alamat}"></td>
+	        	</tr>
+	        	<tr>
+	        		<td><b>RT/RW</b></td>
+	        		<td th:text="${keluarga.rt} + '/' + ${keluarga.rw}"></td>
+	        	</tr>
+	        	<tr>
+	        		<td><b>Kelurahan/Desa</b></td>
+	        		<td th:text="${keluarga.nama_kelurahan}"></td>
+	        	</tr>
+	        	<tr>
+	        		<td><b>Kecamatan</b></td>
+	        		<td th:text="${keluarga.nama_kecamatan}"></td>
+	        	</tr>
+	        	<tr>
+	        		<td><b>Kota</b></td>
+	        		<td th:text="${keluarga.nama_kota}"></td>
+	        	</tr>
+	        </table> 
+ 		</div><hr/>
+ 		
+ 		<div class="container">
+ 			<table class="table table-bordered dt-responsive">
+ 				<thead>
+ 					<tr>
+						<th class="text-center" th:text="'No.'"></th>
+						<th class="text-center" th:text="'Nama Lengkap'"></th>
+						<th class="text-center" th:text="'NIK'"></th>
+						<th class="text-center" th:text="'Jenis Kelamin'"></th>
+						<th class="text-center" th:text="'Tempat Lahir'"></th>
+						<th class="text-center" th:text="'Tanggal Lahir'"></th>
+						<th class="text-center" th:text="'Agama'"></th>
+						<th class="text-center" th:text="'Pekerjaan'"></th>
+						<th class="text-center" th:text="'Status Perkawinan'"></th>
+						<th class="text-center" th:text="'Status dalam Keluarga'"></th>
+						<th class="text-center" th:text="'Kewarganegaraan'"></th>
+					</tr>
+ 				</thead>
+ 				<tbody>
+ 				
+ 					<tr th:each="anggota, iterationStatus: ${keluarga.anggota_keluarga}">
+						<td class="text-center" th:text="${iterationStatus.count}"></td>
+						<td th:text="${anggota.nama}"></td>
+						<td class="text-center" th:text="${anggota.nik}"></td>
+						<td class="text-center" th:text="${anggota.jenis_kelamin}==1 ? 'Wanita' : 'Pria'"></td>
+						<td class="text-center" th:text="${anggota.tempat_lahir}"></td>
+						<td class="text-center" th:text="${anggota.tanggal_lahir}"></td>
+						<td class="text-center" th:text="${anggota.agama}"></td>
+						<td class="text-center" th:text="${anggota.pekerjaan}"></td>
+						<td class="text-center" th:text="${anggota.status_perkawinan}"></td>
+						<td class="text-center" th:text="${anggota.status_dalam_keluarga}"></td>
+						<td class="text-center" th:text="${anggota.is_wni}==1 ? 'WNI' : 'WNA'"></td>
+					</tr>
+ 				</tbody>
+ 			</table>
+ 		</div>
+ 		
+        
+    </body>
+	<div th:replace="fragments/fragment :: footer"></div>
+</html>

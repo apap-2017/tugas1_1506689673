@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Add</title>
+		<link rel = "stylesheet" href = "/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div th:replace="fragments/fragment :: header"></div><br/>
+		
+		<h1>Sukses!</h1>
+		<h5 th:text="'Penduduk dengan NIK ' + ${nik} + ' berhasil ditambahkan'"></h5>
+	</body>
+	<div th:replace="fragments/fragment :: footer"></div>
+</html>
